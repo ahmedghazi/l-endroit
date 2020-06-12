@@ -8,22 +8,16 @@ const WrapperContext = React.createContext()
 const query = graphql`
     query {
         prismic {
-            allSettingss {
-                edges {
-                    node {
-                        title
-                        description
-                        image
-                    }
-                }
+            settings(lang: "fr-fr", uid: "settings") {
+                title
             }
         }
     }
 `
 
 const Layout = ({ children, pageContext: { template } }) => {
-    const { prismic } = useStaticQuery(query)
-    const settings = prismic.allSettingss.edges.slice(0,1).pop().node;
+    const { prismic: {settings} } = useStaticQuery(query)
+    // const settings = prismic
 
     return(
         <WrapperContext.Provider value={{ settings }}>

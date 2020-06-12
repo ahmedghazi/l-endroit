@@ -8,7 +8,7 @@ import Logo from '../images/l-endroit-logo.inline.svg'
 const Header = () => {
   const _WrapperContext = useContext(WrapperContext)
   const { settings } = _WrapperContext
-  const [scrollDirection, setScrollDirection] = useState(false)
+  const [scrollDirection, setScrollDirection] = useState("")
   // console.log(settings)
 
   useEffect(() => {
@@ -19,12 +19,11 @@ const Header = () => {
 
   let prevScrollTop = 0
   const _onScroll = () => {
-    // console.log(window.pageYOffset)
     if(window.pageYOffset > prevScrollTop){
-      console.log("down")
+      // console.log("down")
       setScrollDirection("down")
     }else{
-      console.log("up")
+      // console.log("up")
       setScrollDirection("up")
     }
     prevScrollTop = window.pageYOffset
@@ -33,11 +32,11 @@ const Header = () => {
   const _goToContact = () => {
     window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
   }
-
+console.log(settings)
   return (
     <header className={scrollDirection}>
       <div className="logo">
-        <Link to="/">
+        <Link to="/" title={settings.title[0].text}>
           <Logo />
         </Link>
       </div>

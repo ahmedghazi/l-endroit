@@ -10,7 +10,7 @@ const CardHome = ({input}) => {
 
   return (
     <div className="card-home">
-      <Link to={linkResolver(input._meta)}>
+      {/* <Link to={linkResolver(input._meta)}> */}
         <div className="row">
           <div className="col-md-6 col-xs-12">
             {input.image_featuredSharp &&
@@ -40,7 +40,7 @@ const CardHome = ({input}) => {
           </div>
         </div>
         
-      </Link>
+      {/* </Link> */}
     </div>
   );
 };
