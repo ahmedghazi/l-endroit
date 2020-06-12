@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react';
 //import { StaticQuery, graphql } from "gatsby"
 import { Link } from 'gatsby';
-import { WrapperContext } from './Layout';
+// import { WrapperContext } from './Layout';
 import Burger from './ui/Burger';
 import Logo from '../images/l-endroit-logo.inline.svg'
 
 const Header = () => {
-  const _WrapperContext = useContext(WrapperContext)
-  const { settings } = _WrapperContext
+  // const _WrapperContext = useContext(WrapperContext)
+  // const { settings } = _WrapperContext
   const [scrollDirection, setScrollDirection] = useState("")
   // console.log(settings)
 
@@ -32,11 +32,11 @@ const Header = () => {
   const _goToContact = () => {
     window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
   }
-console.log(settings)
+// console.log(settings)
   return (
     <header className={scrollDirection}>
       <div className="logo">
-        <Link to="/" title={settings.title[0].text}>
+        <Link to="/" >
           <Logo />
         </Link>
       </div>
