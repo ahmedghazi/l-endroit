@@ -1,0 +1,35 @@
+.card-home{
+    padding: $margeS 0;
+    border-top: $border;
+    &:last-child{
+        border-bottom: $border;
+    }
+    // border-top: $border;
+    //background: yellow;
+    figure{}
+    &:hover{
+        //h2{color: $color2}
+    }
+
+    .card-header{
+        padding-left: $margeS;
+        height: 100%;
+        .top{
+            padding-bottom: $margeS;
+            border-bottom: $border;
+        }
+        .bottom{
+            position: absolute; width: 100%;
+            bottom: 0;
+            padding-top: $margeS;
+            border-top: $border;
+        }
+    }
+}
+
+//40px projets
+//60px home
+
+@media all and (max-width:$s){
+
+}

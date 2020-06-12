@@ -1,0 +1,20 @@
+{
+  "Main" : {
+    "title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1",
+        "label" : "title",
+        "placeholder" : "SEO Title"
+      }
+    },
+    "texte" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label" : "Texte",
+        "placeholder" : "SEO description"
+      }
+    }
+  }
+}

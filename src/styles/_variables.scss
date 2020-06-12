@@ -1,0 +1,51 @@
+/* BASE VARIABLES
+ *******************/
+
+
+/* Sizes */
+$max-width: 1800px;
+
+
+
+/* Colors */
+$black: #21211F;
+$white: #EFEEEB;
+
+//$links: $color1;
+//$hover: $color2;
+
+$bg: $white;
+
+/* PADDINGS */
+$margeXS: 10px;
+$margeS: $margeXS * 2;//20px
+$margeM: $margeXS * 4;
+$margeL: $margeXS * 8;
+$margeXL: $margeL * 2;
+$gutter: $margeXS;
+
+/* Fonts */
+$fontPrimary: helvetica, sans-serif;
+
+$fontXS: 12px;
+
+$fontS: 12px;
+$fontSLh: 1.2em;
+
+$fontM: 24px;
+$fontMLh: 1.2em;
+
+$borderWidth: 1px;
+$border: $borderWidth solid;
+
+/* Breakpoints */
+$cap: 1920px;
+$m: 1024px;
+$s: 982px;
+$xs: 500px;
+
+$logoRatio: 1185.68/78.45;
+$headerHeight: calc( (100vw - #{$margeM}) / #{$logoRatio} + #{$margeM} + #{$margeS} + 42px);
+$headerHeightMobile: 50px;
+
+@debug "logoRatio: #{$logoRatio}";

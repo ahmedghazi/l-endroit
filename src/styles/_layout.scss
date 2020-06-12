@@ -1,0 +1,50 @@
+html,body{}
+body{
+    scroll-behavior: smooth;
+}
+
+/*
+THEMES
+*/
+body{
+    // header,
+    scroll-behavior: smooth;
+    background: $white;
+    main{background: $white;}
+    &,
+    a, 
+    button{color: $black;}
+    svg path{fill: $black}
+
+    &.dark{
+        // header,
+        main{background: $black;}
+        &,
+        a, 
+        button{color: $white;}
+        svg path{fill: $white}
+
+        footer{
+            background: $white;
+            &,
+            a{color: $black;}
+        }
+    }
+}
+
+main{
+    padding: $headerHeight $margeS $margeL;
+    // margin-bottom: calc(80vh - #{$margeS});
+    min-height: 80vh;
+    position: relative;
+    z-index: 1;
+    border-bottom-left-radius: $margeS;
+    border-bottom-right-radius: $margeS;
+}
+.sep80{height: 80vh;}
+
+.xs-only{display: none}
+@media all and (max-width:$s){
+    .xs-only{display: block}
+    
+}
