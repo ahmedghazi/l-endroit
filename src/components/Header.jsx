@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from "react"
 //import { StaticQuery, graphql } from "gatsby"
-import { Link } from 'gatsby';
+import { Link } from "gatsby"
 // import { WrapperContext } from './Layout';
-import Burger from './ui/Burger';
-import Logo from '../images/l-endroit-logo.inline.svg'
+import Burger from "./ui/Burger"
+import Logo from "../images/l-endroit-logo.inline.svg"
 
 const Header = () => {
   // const _WrapperContext = useContext(WrapperContext)
@@ -19,10 +19,10 @@ const Header = () => {
 
   let prevScrollTop = 0
   const _onScroll = () => {
-    if(window.pageYOffset > prevScrollTop){
+    if (window.pageYOffset > prevScrollTop) {
       // console.log("down")
       setScrollDirection("down")
-    }else{
+    } else {
       // console.log("up")
       setScrollDirection("up")
     }
@@ -30,13 +30,17 @@ const Header = () => {
   }
 
   const _goToContact = () => {
-    window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
+    window.scrollTo({
+      left: 0,
+      top: document.body.scrollHeight,
+      behavior: "smooth",
+    })
   }
-// console.log(settings)
+  // console.log(settings)
   return (
     <header className={scrollDirection}>
       <div className="logo">
-        <Link to="/" >
+        <Link to="/">
           <Logo />
         </Link>
       </div>
@@ -50,11 +54,10 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      
+
       {/* <Burger /> */}
     </header>
-  );
-
+  )
 }
 
-export default Header;
+export default Header

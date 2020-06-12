@@ -1,11 +1,11 @@
-import React from 'react';
-import {graphql, Link} from 'gatsby';
+import React from "react"
+import { graphql, Link } from "gatsby"
 //import PubSub from 'pubsub-js';
 //import cookie from 'react-cookies'
-import { linkResolver } from 'gatsby-source-prismic-graphql';
-import SEO from '../components/seo'
-import { RichText } from 'prismic-reactjs';
-import CardHome from '../components/CardHome'
+import { linkResolver } from "gatsby-source-prismic-graphql"
+import SEO from "../components/seo"
+import { RichText } from "prismic-reactjs"
+import CardHome from "../components/CardHome"
 
 export const query = graphql`
   query Q {
@@ -29,22 +29,16 @@ export const query = graphql`
           }
         }
       }
-      
     }
   }
+`
 
-`   
-
-const Home = ({data}) => {
+const Home = ({ data }) => {
   // console.log(data)
-  const {home} = data.prismic
-  if (!home) return null;
+  const { home } = data.prismic
+  if (!home) return null
   // console.log(doc)
-  const {
-    title,
-    texte,
-    projets
-  } = home
+  const { title, texte, projets } = home
 
   // const projects = data.prismic.allProjects.edges
   // console.log(projects)
@@ -54,18 +48,17 @@ const Home = ({data}) => {
         pageTitle={title[0].text}
         pageDescription={texte[0].text}
         template="template-home"
-        // pathname={location.pathname} 
-        /> 
+        // pathname={location.pathname}
+      />
       {/* {RichText.render(title)} */}
-      
+
       <div className="projets no-gutter">
-        {projets.map(({projet}, i) =>(
+        {projets.map(({ projet }, i) => (
           <CardHome input={projet} key={i} />
         ))}
       </div>
-      
     </div>
   )
 }
 
-export default Home;
+export default Home

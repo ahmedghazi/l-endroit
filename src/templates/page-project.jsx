@@ -26,7 +26,6 @@
 //   return null;
 // };
 
-
 // export default function PageProject({data}) {
 //   console.log(data.prismic)
 //   const {
@@ -47,8 +46,8 @@
 //         pageDescription={''}
 //         template="template-project dark"
 //         // pageBanner={image_featured}
-//         page={true} 
-//         /> 
+//         page={true}
+//         />
 //       <div className="hero">
 //         <Image source={data.prismic.project} property="image_featured" />
 //       </div>
@@ -77,8 +76,6 @@
 //               </div>
 //             </div>
 
-
-            
 //           </div>
 //         </div>
 //         <div className="content">
@@ -100,8 +97,7 @@
 //                         <div className="value ">{RichText.render(li.valeur)}</div>
 //                       </div>
 //                     </div>
-                    
-                    
+
 //                   </li>
 //                 ))}
 //               </ul>
@@ -111,7 +107,6 @@
 //       </div>
 
 //     </div>
-    
+
 //   );
 // }
-

@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react"
 
 const Page404 = () => {
-    return (
-        <div className="page-404">
-            <div className="inner pt-xl pl-m pr-m">
-                <h1>Page Not Found</h1>
-                <p>The page requested couldn't be found</p>
-                <a href="/">Back home</a>
-            </div>
-        </div>
-    );
-};
+  return (
+    <div className="page-404">
+      <div className="inner pt-xl pl-m pr-m">
+        <h1>Page Not Found</h1>
+        <p>The page requested couldn't be found</p>
+        <a href="/">Back home</a>
+      </div>
+    </div>
+  )
+}
 
-export default Page404;
+export default Page404
