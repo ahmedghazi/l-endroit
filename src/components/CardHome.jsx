@@ -6,7 +6,7 @@ import Img from "gatsby-image"
 import { getYearByDate } from '../core/utils'
 
 const CardHome = ({input}) => {
-  console.log(input)
+  // console.log(input)
 
   return (
     <div className="card-home">
@@ -24,18 +24,6 @@ const CardHome = ({input}) => {
                 <div className="alinea">{input.realisateur}</div>
                 <div className="alinea-mid">{`${input.categorie.title}, ${getYearByDate(input.date)}`}</div>
               </div>
-              {/* <div className="bottom">
-                <div className="row">
-                  <div className="col-md-6">
-                    <div className="cat">{input.categorie.title}</div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="date">{getYearByDate(input.date)}</div>
-                  </div>
-                </div>
-              </div> */}
-              
-
             </div>
           </div>
         </div>

@@ -16,8 +16,9 @@ const query = graphql`
 `
 
 const Layout = ({ children, pageContext: { template } }) => {
-    const { prismic: {settings} } = useStaticQuery(query)
-    // const settings = prismic
+    const { prismic } = useStaticQuery(query)
+    const { settings } = prismic
+    // console.log(settings)
 
     return(
         <WrapperContext.Provider value={{ settings }}>
