@@ -55,33 +55,53 @@ console.log(credits)
       <div className="container-fluid">
         <div className="header">
           <div className="row">
-            <div className="col-md-3">
-              <h1>{title[0].text}</h1>
+            <div className="col-md-6 col-xs-12">
+              <div className="item">
+                <h1>{title[0].text}</h1>
+              </div>
             </div>
-            <div className="col-md-3">
-              {realisateur}
+
+            <div className="col-md-6 col-xs-12">
+              <div className="item">
+                <div className="row">
+                  <div className="col-md-6 col-xs-6">
+                    {realisateur}
+                  </div>
+                  <div className="col-md-3 col-xs-6">
+                    <h1>{categorie.title}</h1>
+                  </div>
+                  <div className="col-md-3 col-xs-6 text-right">
+                    {getYearByDate(date)}
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="col-md-3">
-              <h1>{categorie.title}</h1>
-            </div>
-            <div className="col-md-3">
-              {getYearByDate(date)}
-            </div>
+
+
+            
           </div>
         </div>
         <div className="content">
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-6 col-xs-12">
               <div className="texte">
                 {RichText.render(texte)}
               </div>
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 col-xs-12">
               <ul className="credits fS">
                 {credits.map((li,i ) => (
                   <li key={i}>
-                    <div className="label">{li.label}</div>
-                    <div className="value alinea">{RichText.render(li.valeur)}</div>
+                    <div className="row">
+                      <div className="col-md-6">
+                        <div className="label">{li.label}</div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="value ">{RichText.render(li.valeur)}</div>
+                      </div>
+                    </div>
+                    
+                    
                   </li>
                 ))}
               </ul>

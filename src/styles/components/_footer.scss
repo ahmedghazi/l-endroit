@@ -3,23 +3,28 @@ footer{
     position: fixed;
     bottom: 0;
     width: 100%; height: 80vh;
-    padding:  $margeL $margeS;
+    padding:  $margeL $margeS $margeS;
     background: $black;
     color: $white;
     a{
         color:$white
     }
     h3{
-        margin-bottom: .5em;
+        margin-bottom: 1em;
     }
+    .infos{margin-bottom: $margeM;}
     .contacts,
     .colophon{
         margin-bottom: $margeL;
     }
+    .copy{
+        position: absolute;
+        bottom: $margeM; width: 100%;
+    }
     svg{
         position: absolute;
-        width: calc(100% - #{$margeM});
-        bottom: $margeS;
+        width: 100%; height: auto;;
+        bottom: 0;
         path{
             fill: $white;
         }
@@ -28,6 +33,16 @@ footer{
 
 @media all and (max-width:$s){
     footer{
-        
+        padding:  $margeM $margeXS $margeXS;
+        height: 100vh;
+        .infos,
+        .contacts,
+        .colophon{
+            margin-bottom: $margeS;
+        }
+        svg{
+            width: calc(100% - #{$margeS});
+            bottom: $margeXS;
+        }
     }
 }

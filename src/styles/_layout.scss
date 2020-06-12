@@ -28,6 +28,7 @@ body{
             background: $white;
             &,
             a{color: $black;}
+            svg path{fill: $black}
         }
     }
 }
@@ -46,5 +47,8 @@ main{
 .xs-only{display: none}
 @media all and (max-width:$s){
     .xs-only{display: block}
-    
+    main{
+        padding: $headerHeightMobile $margeXS $margeL;
+    }
+    .sep80{height: 100vh;}
 }

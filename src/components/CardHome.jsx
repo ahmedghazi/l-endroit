@@ -22,9 +22,9 @@ const CardHome = ({input}) => {
               <div className="top">
                 <h2>{input.title[0].text}</h2>
                 <div className="alinea">{input.realisateur}</div>
-                <div className="alinea">{`${input.categorie.title}, ${getYearByDate(input.date)}`}</div>
+                <div className="alinea-mid">{`${input.categorie.title}, ${getYearByDate(input.date)}`}</div>
               </div>
-              <div className="bottom">
+              {/* <div className="bottom">
                 <div className="row">
                   <div className="col-md-6">
                     <div className="cat">{input.categorie.title}</div>
@@ -33,7 +33,7 @@ const CardHome = ({input}) => {
                     <div className="date">{getYearByDate(input.date)}</div>
                   </div>
                 </div>
-              </div>
+              </div> */}
               
 
             </div>

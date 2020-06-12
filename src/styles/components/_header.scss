@@ -5,25 +5,25 @@ header{
     z-index: 250;
     //margin-bottom: $margeM;
     padding: $margeS;
+    &.down{
+        svg {
+            g{
+                path{@include slide(top, 1)}
+                path:first-child{@include slide(none, 1)}
+            }
+        }
+    }
     .logo{
         margin-bottom: $margeS;
         svg{
             width: 100%;
             vertical-align: top;
-            // path{
-            //     fill:$black
-            // }
+            g path{
+                transition: transform .2s ease-in-out;
+            }
         }
     }
-    // background: $bg;
-    // nav{
-    //     ul{
-    //         @include flexbox();
-    //         li{
-    //             margin-left: 5px;
-    //         }
-    //     }
-    // }
+
 }
 
 .downscroll{
@@ -37,7 +37,7 @@ header{
 
 @media all and (max-width:$s){
     header{
-        // padding: $margeXS;
+        padding: $margeXS;
         
     }
 }

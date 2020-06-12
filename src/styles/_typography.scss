@@ -35,6 +35,11 @@ body {
 	font-size: $fontM;
 	//line-height: $fontMLh; 
 }
+.fL{
+	font-size: $fontL;
+	//line-height: $fontMLh; 
+}
+
 
 /* Headings */
 h1,h2,h3,h4,h5,h6,
@@ -43,13 +48,30 @@ h1,h2,h3,h4,h5,h6,
 	font-weight: normal;
 }
 
+
+
 .alinea{
 	text-indent: 2em;
+}
+.alinea-mid{
+	text-indent: 1em;
 }
 // .small{
 // 	font-size: $fontXs;
 // 	line-height: $fontXsLh;
 // }
+
+@media all and (max-width:$s){
+	body{
+		font-size: 14px;
+	}
+	.fXS{
+		font-size: 12px;
+	}
+	h1,h2,h3,h4,h5,h6,.headline,
+	.fM{font-size: 14px;}
+	.alinea-mid{text-indent: 0;}
+}
 
 /* Links */
 //a{text-decoration: none;}

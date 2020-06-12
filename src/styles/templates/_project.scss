@@ -6,14 +6,18 @@
   .hero{}
   .header{
     padding-top: $margeS;
-    padding-bottom: $margeS;
-    border-bottom: $border;
+    
+    .item{
+      border-bottom: $border;
+      padding-bottom: $margeS;
+    }
   }
   .content{
     padding-top: $margeS;
     padding-bottom: $margeS;
     .credits{
       li{margin-bottom: 1em;}
+      a{text-decoration: underline;}
     }
   }
 }
