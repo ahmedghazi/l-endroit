@@ -7,6 +7,25 @@ import Twitter from './Twitter'
 
 
 // Complete tutorial: https://www.gatsbyjs.org/docs/add-seo-component/
+const query = graphql`
+  query SEO {
+    site {
+      buildTime(formatString: "YYYY-MM-DD")
+      siteMetadata {
+        siteTitle
+        siteDescription
+        siteUrl
+        defaultBanner: banner
+        ogLanguage
+        author
+        twitter
+        facebook
+      }
+    }
+    
+  }
+`
+
 
 const SEO = ({ pageTitle, pageDescription, pageBanner, pathname, page, template }) => {
   const { site } = useStaticQuery(query)
@@ -25,7 +44,6 @@ const SEO = ({ pageTitle, pageDescription, pageBanner, pathname, page, template 
 
   //const localizedPath = i18n[locale].default ? '' : `/${i18n[locale].path}`
   const homeURL = `${siteUrl}`
-
 
   const seo = {
     title: page ? pageTitle+" - "+siteTitle : siteTitle,
@@ -171,21 +189,3 @@ SEO.defaultProps = {
   locale: 'fr-fr',
 }
 
-const query = graphql`
-  query SEO {
-    site {
-      buildTime(formatString: "YYYY-MM-DD")
-      siteMetadata {
-        siteTitle
-        siteDescription
-        siteUrl
-        defaultBanner: banner
-        ogLanguage
-        author
-        twitter
-        facebook
-      }
-    }
-    
-  }
-`

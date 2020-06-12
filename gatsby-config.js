@@ -29,7 +29,7 @@ module.exports = {
       resolve: 'gatsby-source-prismic-graphql',
       options: {
         repositoryName: repositoryName,
-        // accessToken: accessToken,
+        accessToken: accessToken,
         defaultLang: 'fr-fr',
         path: '/preview', // optional, default: /preview
         previews: true, // optional, default: false

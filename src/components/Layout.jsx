@@ -17,12 +17,13 @@ const query = graphql`
 
 const Layout = ({ children, pageContext: { template } }) => {
     const { prismic } = useStaticQuery(query)
-    const { settings } = prismic
-    console.log("Layout")
-    console.log(settings)
+    // const { settings } = prismic
+    // console.log("Layout")
+    // console.log(settings)
+    console.log(prismic)
 
     return(
-        <WrapperContext.Provider value={{ settings }}>
+        <WrapperContext.Provider >
             <div id="page">
                 <Header  />
                 <main>
