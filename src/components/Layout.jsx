@@ -18,6 +18,7 @@ const query = graphql`
 const Layout = ({ children, pageContext: { template } }) => {
     const { prismic } = useStaticQuery(query)
     const { settings } = prismic
+    console.log("Layout")
     console.log(settings)
 
     return(
