@@ -33,7 +33,8 @@ module.exports = {
         defaultLang: 'fr-fr',
         path: '/preview', // optional, default: /preview
         previews: true, // optional, default: false
-        pages: [{
+        pages: [
+          {
             type: 'Home',
             match: '/',
             path: '/',
@@ -43,17 +44,18 @@ module.exports = {
               'profilepic',
             ],
           },
-          {
-            type: 'Project', // TypeName from prismic
-            match: '/project/:uid', // pages will be generated under this pattern (optional)
-            path: '/project', // placeholder page for unpublished documents
-            component: require.resolve('./src/templates/page-project.jsx'),
-            // sortBy: 'date_ASC', // optional, default: meta_lastPublicationDate_ASC; useful for pagination
-            sharpKeys: [
-              /image|photo|picture/, // (default)
-              'profilepic',
-            ],
-        }],
+          // {
+          //   type: 'Project', // TypeName from prismic
+          //   match: '/project/:uid', // pages will be generated under this pattern (optional)
+          //   path: '/project', // placeholder page for unpublished documents
+          //   component: require.resolve('./src/templates/page-project.jsx'),
+          //   // sortBy: 'date_ASC', // optional, default: meta_lastPublicationDate_ASC; useful for pagination
+          //   sharpKeys: [
+          //     /image|photo|picture/, // (default)
+          //     'profilepic',
+          //   ],
+          // }
+        ],
       },
     },
     {
