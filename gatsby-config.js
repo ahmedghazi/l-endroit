@@ -32,7 +32,7 @@ module.exports = {
         accessToken: accessToken,
         defaultLang: 'fr-fr',
         path: '/preview', // optional, default: /preview
-        previews: true, // optional, default: false
+        // previews: true, // optional, default: false
         pages: [
           {
             type: 'Home',
