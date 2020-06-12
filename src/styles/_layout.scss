@@ -47,6 +47,10 @@ main{
 .xs-only{display: none}
 @media all and (max-width:$s){
     .xs-only{display: block}
+    .container-fluid{
+        padding-left: $margeXS;
+        padding-right: $margeXS;
+    }
     main{
         padding: $headerHeightMobile $margeXS $margeL;
     }

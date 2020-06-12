@@ -23,7 +23,7 @@ header{
             }
         }
     }
-
+    
 }
 
 .downscroll{
@@ -38,6 +38,11 @@ header{
 @media all and (max-width:$s){
     header{
         padding: $margeXS;
-        
+        .logo{
+            margin-bottom: $margeXS;
+        }
+        nav{
+            a, .btn{font-size: $fontS;}
+        }
     }
 }

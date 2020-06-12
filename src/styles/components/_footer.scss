@@ -35,14 +35,13 @@ footer{
     footer{
         padding:  $margeM $margeXS $margeXS;
         height: 100vh;
+        // .row{height: 100%;}
         .infos,
         .contacts,
         .colophon{
-            margin-bottom: $margeS;
+            margin-bottom: $margeM;
+            p{font-size: $fontS;}
         }
-        svg{
-            width: calc(100% - #{$margeS});
-            bottom: $margeXS;
-        }
+        .copy{position: initial;}
     }
 }

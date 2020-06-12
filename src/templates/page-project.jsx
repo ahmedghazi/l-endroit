@@ -56,21 +56,21 @@ console.log(credits)
         <div className="header">
           <div className="row">
             <div className="col-md-6 col-xs-12">
-              <div className="item">
+              <div className="item title">
                 <h1>{title[0].text}</h1>
               </div>
             </div>
 
             <div className="col-md-6 col-xs-12">
-              <div className="item">
+              <div className="item metas">
                 <div className="row">
                   <div className="col-md-6 col-xs-6">
                     {realisateur}
                   </div>
-                  <div className="col-md-3 col-xs-6">
-                    <h1>{categorie.title}</h1>
+                  <div className="col-md-3 col-xs-3">
+                    {categorie.title}
                   </div>
-                  <div className="col-md-3 col-xs-6 text-right">
+                  <div className="col-md-3 col-xs-3 text-right">
                     {getYearByDate(date)}
                   </div>
                 </div>
@@ -93,10 +93,10 @@ console.log(credits)
                 {credits.map((li,i ) => (
                   <li key={i}>
                     <div className="row">
-                      <div className="col-md-6">
+                      <div className="col-md-6 col-xs-6">
                         <div className="label">{li.label}</div>
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-md-6 col-xs-6">
                         <div className="value ">{RichText.render(li.valeur)}</div>
                       </div>
                     </div>

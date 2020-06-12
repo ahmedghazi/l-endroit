@@ -24,5 +24,25 @@
 
 
 @media all and (max-width:$s){
-    
+  .template-project{
+    .header{
+      padding-top: 0;
+      
+      .item{
+        padding-top: $margeXS;
+        padding-bottom: $margeXS;
+      }
+      h1,
+      .metas{font-size: $fontS;}
+    }
+    .content{
+      padding-top: $margeXS;
+      padding-bottom: $margeXS;
+      
+      .credits{
+        li{margin-bottom: 1em;}
+        a{text-decoration: underline;}
+      }
+    }
+  }
 }

@@ -65,7 +65,7 @@ const Footer = () => {
                                 <div className="copyright">© {new Date().getFullYear()}     </div>
                             </div>
                             <div className="col-md-6 col-xs-6">
-                            <p>Made with ❤ by the <a href="ahmedghazi.com" target="_blank">a_e_a_i_</a></p>
+                            <p>Made with ❤ by <a href="ahmedghazi.com" target="_blank">a_e_a_i_</a></p>
                             </div>
                         </div>
                     </div>
