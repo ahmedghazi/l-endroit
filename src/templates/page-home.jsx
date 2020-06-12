@@ -24,7 +24,7 @@ export const query = graphql`
         projets {
           projet {
             ... on PRISMIC_Project {
-              ...projetCard
+              ...project
             }
           }
         }

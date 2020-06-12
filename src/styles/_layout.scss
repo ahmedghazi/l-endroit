@@ -41,7 +41,7 @@ main{
     border-bottom-left-radius: $margeS;
     border-bottom-right-radius: $margeS;
 }
-.sep80{height: 80vh;}
+.sep80{height: calc(80vh - #{$margeS});}
 
 .xs-only{display: none}
 @media all and (max-width:$s){

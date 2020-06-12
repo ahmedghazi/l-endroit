@@ -10,8 +10,13 @@ export const query = graphql`
     #         banner{url}
     #     }
     # }
-    fragment projetCard on PRISMIC_Project {
+    fragment project on PRISMIC_Project {
+      _meta {
+        type
+        uid
+      }
       title
+      texte
       realisateur
       date
       categorie {
@@ -24,6 +29,10 @@ export const query = graphql`
       image_featuredSharp{
         ...sharp
       } 
+      credits{
+        label
+        valeur
+      }
     }
     
     # fragment projetCard on PrismicProjectData {

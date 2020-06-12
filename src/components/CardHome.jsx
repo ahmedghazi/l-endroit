@@ -10,7 +10,7 @@ const CardHome = ({input}) => {
 
   return (
     <div className="card-home">
-      {/* <Link to={linkResolver(input._meta)}> */}
+      <Link to={linkResolver(input._meta)}>
         <div className="row">
           <div className="col-md-6 col-xs-12">
             {input.image_featuredSharp &&
@@ -22,6 +22,7 @@ const CardHome = ({input}) => {
               <div className="top">
                 <h2>{input.title[0].text}</h2>
                 <div className="alinea">{input.realisateur}</div>
+                <div className="alinea">{`${input.categorie.title}, ${getYearByDate(input.date)}`}</div>
               </div>
               <div className="bottom">
                 <div className="row">
@@ -39,7 +40,7 @@ const CardHome = ({input}) => {
           </div>
         </div>
         
-      {/* </Link> */}
+      </Link>
     </div>
   );
 };
