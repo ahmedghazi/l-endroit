@@ -7,25 +7,6 @@ import Twitter from './Twitter'
 
 
 // Complete tutorial: https://www.gatsbyjs.org/docs/add-seo-component/
-const query = graphql`
-  query SEO {
-    site {
-      buildTime(formatString: "YYYY-MM-DD")
-      siteMetadata {
-        siteTitle
-        siteDescription
-        siteUrl
-        defaultBanner: banner
-        ogLanguage
-        author
-        twitter
-        facebook
-      }
-    }
-    
-  }
-`
-
 
 const SEO = ({ pageTitle, pageDescription, pageBanner, pathname, page, template }) => {
   const { site } = useStaticQuery(query)
@@ -33,9 +14,11 @@ const SEO = ({ pageTitle, pageDescription, pageBanner, pathname, page, template 
     buildTime,
     siteMetadata: { 
       siteTitle, 
+      siteTitleAlt,
       siteDescription, 
       siteUrl, 
-      defaultBanner, author, 
+      defaultBanner, 
+      author, 
       twitter, 
       facebook 
     },
@@ -45,13 +28,14 @@ const SEO = ({ pageTitle, pageDescription, pageBanner, pathname, page, template 
   //const localizedPath = i18n[locale].default ? '' : `/${i18n[locale].path}`
   const homeURL = `${siteUrl}`
 
+
   const seo = {
-    title: page ? pageTitle+" - "+siteTitle : siteTitle,
-    description: page ? pageDescription : siteDescription,
-    image: defaultBanner,
+    title: page ? pageTitle+" - "+siteTitleAlt : pageTitle,
+    description: pageDescription,
+    image: pageBanner || defaultBanner,
     url: `${siteUrl}${pathname || ''}`,
   }
-
+// console.log(seo)
   // schema.org in JSONLD format
   // https://developers.google.com/search/docs/guides/intro-structured-data
   // You can fill out the 'author', 'creator' with more data or another type (e.g. 'Organization')
@@ -139,7 +123,7 @@ const SEO = ({ pageTitle, pageDescription, pageBanner, pathname, page, template 
   return (
     <>
       <Helmet title={seo.title}>
-        <html lang={""} />
+        <html lang={"fr-FR"} />
         <meta name="description" content={seo.description} />
         <meta name="image" content={seo.image} />
         <meta name="gatsby-starter" content="Gatsby Starter Prismic i18n" />
@@ -189,3 +173,22 @@ SEO.defaultProps = {
   locale: 'fr-fr',
 }
 
+const query = graphql`
+  query SEO {
+    site {
+      buildTime(formatString: "YYYY-MM-DD")
+      siteMetadata {
+        siteTitle
+        siteTitleAlt
+        siteDescription
+        siteUrl
+        defaultBanner: banner
+        ogLanguage
+        author
+        twitter
+        facebook
+      }
+    }
+    
+  }
+`

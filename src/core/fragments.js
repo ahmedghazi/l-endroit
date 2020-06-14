@@ -10,48 +10,50 @@ export const query = graphql`
   #         banner{url}
   #     }
   # }
-  fragment project on PRISMIC_Project {
-    _meta {
-      type
-      uid
+  fragment project on PrismicProjectDataType {
+    title {
+      text
     }
-    title
-    texte
+    texte {
+      html
+    }
     realisateur
-    date
-    categorie {
-      ... on PRISMIC_Categorie {
-        _linkType
-        title
-      }
-    }
-    image_featured
-    image_featuredSharp {
+    image_featured {
       ...sharp
     }
+    date
     credits {
       label
-      valeur
+      valeur {
+        html
+      }
     }
-  }
-
-  # fragment projetCard on PrismicProjectData {
-  #     title {text}
-  #     texte {
-  #         html,
-  #         text
-  #     }
-  #     image_featured {
-  #         ...fluidImageFeatured
-  #     }
-
-  # }
-
-  fragment sharp on File {
-    childImageSharp {
-      fluid(maxWidth: 1500, quality: 80) {
-        ...GatsbyImageSharpFluid
+    categorie {
+      document {
+        ... on PrismicCategorie {
+          id
+          data {
+            title
+          }
+        }
       }
     }
   }
+
+
+
+  fragment sharp on PrismicImageType {
+		url
+		alt
+		fluid(maxWidth: 1500) {
+			...GatsbyPrismicImageFluid
+		}
+		# localFile {
+		# 	childImageSharp {
+		# 		fluid(maxWidth: 1500, quality: 70){
+		# 			...GatsbyPrismicImageFluid
+		# 		}
+		# 	}
+		# }
+	}
 `

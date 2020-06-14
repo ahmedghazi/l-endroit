@@ -1,13 +1,14 @@
 import React, { useEffect, useState, useContext } from "react"
 //import { StaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
-// import { WrapperContext } from './Layout';
+import { WrapperContext } from './Layout';
 import Burger from "./ui/Burger"
 import Logo from "../images/l-endroit-logo.inline.svg"
 
 const Header = () => {
-  // const _WrapperContext = useContext(WrapperContext)
-  // const { settings } = _WrapperContext
+  const _WrapperContext = useContext(WrapperContext)
+  const { settings } = _WrapperContext
+  
   const [scrollDirection, setScrollDirection] = useState("")
   // console.log(settings)
 
@@ -40,7 +41,7 @@ const Header = () => {
   return (
     <header className={scrollDirection}>
       <div className="logo">
-        <Link to="/">
+        <Link to="/" title={settings.title.text}>
           <Logo />
         </Link>
       </div>

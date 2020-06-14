@@ -1,26 +1,35 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+// import { withPreview } from "gatsby-source-prismic-graphql"
 import { RichText } from "prismic-reactjs"
 import Accr from "../images/l-endroit-accr.inline.svg"
 
-const Footer = () => {
-  const { prismic } = useStaticQuery(graphql`
-    query {
-      prismic {
-        footer(uid: "footer", lang: "fr-fr") {
-          title
-          infos
-          contacts {
-            contact
+const query = graphql`
+  query {
+    prismicFooter {
+      data {
+  
+        infos {
+          raw
+        }
+        contacts {
+          contact {
+            raw
           }
-          colophon
+        }
+        colophon {
+          raw
         }
       }
     }
-  `)
-  if (!prismic.footer) return null
-  const { infos, contacts, colophon } = prismic.footer
-  // console.log(prismic.footer)
+  }
+`;
+
+
+const Footer = () => {
+  const { prismicFooter } = useStaticQuery(query)
+  const { infos, contacts, colophon } = prismicFooter.data
+  // console.log(infos)
 
   return (
     <footer>
@@ -29,7 +38,7 @@ const Footer = () => {
           <div className="col-md-6 col-xs-12">
             <div className="infos">
               <h3>Infos</h3>
-              <div className="texte">{RichText.render(infos)}</div>
+              <div className="texte">{RichText.render(infos.raw)}</div>
             </div>
           </div>
 
@@ -39,7 +48,7 @@ const Footer = () => {
               <div className="row fS">
                 {contacts.map((el, i) => (
                   <div className="col-md-6 col-xs-6" key={i}>
-                    {RichText.render(el.contact)}
+                    {RichText.render(el.contact.raw)}
                   </div>
                 ))}
               </div>
@@ -47,7 +56,7 @@ const Footer = () => {
             {colophon && (
               <div className="colophon">
                 <h3>Colophon</h3>
-                <div className="fS">{RichText.render(colophon)}</div>
+                <div className="fS">{RichText.render(colophon.raw)}</div>
               </div>
             )}
             <div className="copy fS">

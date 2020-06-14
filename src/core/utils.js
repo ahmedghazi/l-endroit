@@ -4,7 +4,7 @@ export function fileNameByUrl(url) {
 }
 
 // In src/prismic-configuration.js
-export const linkResolver = doc => {
+export const linkResolver = (doc) => {
   // URL for a category type
   if (doc.type === "project") {
     return `/project/${doc.uid}`
@@ -21,7 +21,7 @@ export const linkResolver = doc => {
   return "/"
 }
 
-export const getYearByDate = d => {
+export const getYearByDate = (d) => {
   var dt = new Date(d)
   return dt.getFullYear()
 }

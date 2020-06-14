@@ -5,12 +5,14 @@ if (process.env.ENVIRONMENT !== 'production') {
 }
 const { repositoryName, accessToken } = process.env;
 
+const linkResolver = require("./src/core/linkResolver")
 const website = require('./config/website')
 const pathPrefix = website.pathPrefix === '/' ? '' : website.pathPrefix
 
 module.exports = {
   siteMetadata: {
     siteTitle: website.title,
+    siteTitleAlt: website.titleAlt,
     siteDescription: website.description,
     siteUrl: website.url + pathPrefix, // For gatsby-plugin-sitemap
     pathPrefix,
@@ -25,37 +27,22 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sass',
+    // 'gatsby-plugin-transition-link',
     {
-      resolve: 'gatsby-source-prismic-graphql',
+      resolve: 'gatsby-source-prismic',
       options: {
         repositoryName: repositoryName,
         accessToken: accessToken,
-        defaultLang: 'fr-fr',
-        path: '/preview', // optional, default: /preview
-        // previews: true, // optional, default: false
-        pages: [
-          {
-            type: 'Home',
-            match: '/',
-            path: '/',
-            component: require.resolve('./src/templates/page-home.jsx'),
-            sharpKeys: [
-              /image|photo|picture/, // (default)
-              'profilepic',
-            ],
-          },
-          // {
-          //   type: 'Project', // TypeName from prismic
-          //   match: '/project/:uid', // pages will be generated under this pattern (optional)
-          //   path: '/project', // placeholder page for unpublished documents
-          //   component: require.resolve('./src/templates/page-project.jsx'),
-          //   // sortBy: 'date_ASC', // optional, default: meta_lastPublicationDate_ASC; useful for pagination
-          //   sharpKeys: [
-          //     /image|photo|picture/, // (default)
-          //     'profilepic',
-          //   ],
-          // }
-        ],
+        // lang: '*',
+        // linkResolver: () => linkResolver,
+        // htmlSerializer: () => htmlSerializer,
+        schemas: {
+          home: require('./src/schemas/home.json'),
+          settings: require('./src/schemas/settings.json'),
+          footer: require('./src/schemas/footer.json'),
+          project: require('./src/schemas/project.json'),
+          categorie: require('./src/schemas/categorie.json')
+        },
       },
     },
     {

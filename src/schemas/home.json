@@ -1,49 +1,43 @@
 {
-  "Main" : {
-    "uid" : {
-      "type" : "UID",
-      "config" : {
-        "label" : "Slug"
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Slug"
       }
     },
-    "title" : {
-      "type" : "StructuredText",
-      "config" : {
-        "single" : "heading1",
-        "label" : "title",
-        "placeholder" : "SEO Title"
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "title",
+        "placeholder": "SEO Title"
       }
     },
-    "texte" : {
-      "type" : "StructuredText",
-      "config" : {
-        "multi" : "paragraph, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
-        "label" : "Texte",
-        "placeholder" : "SEO description"
-      }
-    }
-  },
-  "SEO" : {
-    "seo_titile" : {
-      "type" : "StructuredText",
-      "config" : {
-        "single" : "paragraph",
-        "label" : "SEO Titile"
+    "texte": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label": "Texte",
+        "placeholder": "SEO description"
       }
     },
-    "seo_texte" : {
-      "type" : "StructuredText",
-      "config" : {
-        "multi" : "paragraph",
-        "label" : "SEO Texte"
-      }
-    },
-    "seo_image" : {
-      "type" : "Image",
-      "config" : {
-        "constraint" : { },
-        "thumbnails" : [ ],
-        "label" : "SEO Image"
+    "projects": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "project": {
+            "type": "Link",
+            "config": {
+              "select": "document",
+              "customtypes": [
+                "project"
+              ],
+              "label": "Project"
+            }
+          }
+        },
+        "label": "Projects"
       }
     }
   }

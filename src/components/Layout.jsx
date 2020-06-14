@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { StaticQuery, useStaticQuery, graphql } from "gatsby"
 import Header from "./Header"
 import Footer from "./Footer"
 
@@ -7,23 +7,25 @@ const WrapperContext = React.createContext()
 
 const query = graphql`
   query {
-    prismic {
-      settings(lang: "fr-fr", uid: "settings") {
-        title
+    prismicSettings {
+      data {
+        title {
+          text
+        }
       }
     }
   }
 `
 
-const Layout = ({ children, pageContext: { template } }) => {
-  const { prismic } = useStaticQuery(query)
+const Layout = ({ children }) => {
+  const { prismicSettings } = useStaticQuery(query)
   // const { settings } = prismic
   // console.log("Layout")
-  // console.log(settings)
-  console.log(prismic)
+  // console.log(prismicSettings)
+  // console.log(prismic)
 
   return (
-    <WrapperContext.Provider>
+    <WrapperContext.Provider value={{settings: prismicSettings.data}}>
       <div id="page">
         <Header />
         <main>{children}</main>
