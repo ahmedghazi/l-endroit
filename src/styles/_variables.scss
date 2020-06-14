@@ -48,7 +48,7 @@ $s: 982px;
 $xs: 500px;
 
 $logoRatio: 1185.68/78.45;
-$headerHeight: calc( (100vw - #{$margeM}) / #{$logoRatio} + #{$margeM} + #{$margeS} + 42px);
-$headerHeightMobile: calc( (100vw - #{$margeS}) / #{$logoRatio} + #{$margeS} + #{$margeXS} + 26px);;
+$headerHeight: calc( (100vw - #{$margeM}) / #{$logoRatio} + #{$margeM} + #{$margeS} + 40px);
+$headerHeightMobile: calc( (100vw - #{$margeS}) / #{$logoRatio} + #{$margeS} + #{$margeXS} + 21px);;
 
 // @debug "logoRatio: #{$logoRatio}";
