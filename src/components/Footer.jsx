@@ -87,7 +87,7 @@ const Footer = () => {
                 <div className="col-md-6 col-xs-6">
                   <p>
                     Made with ❤ by{" "}
-                    <a href="ahmedghazi.com" target="_blank">
+                    <a href="https://ahmedghazi.com" target="_blank" rel="noopener, noreferrer">
                       a_e_a_i_
                     </a>
                   </p>
