@@ -53,7 +53,7 @@ const Header = () => {
         <ul className="x xje">
           <li>
             <button className="btn outline" onClick={_goToContact}>
-              <span>contact</span>
+              <span className="label">contact</span>
             </button>
           </li>
         </ul>

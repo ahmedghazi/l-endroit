@@ -12,6 +12,9 @@ header{
                 path:first-child{@include slide(none, 1)}
             }
         }
+        .btn{
+            @include slide(right, 0)
+        }
     }
     .logo{
         margin-bottom: $margeS;
@@ -23,7 +26,9 @@ header{
             }
         }
     }
-    
+    .btn{
+        @include anime();
+    }
 }
 
 .downscroll{
