@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react"
 //import { StaticQuery, graphql } from "gatsby"
-import { Link } from "gatsby"
+import { Link } from "gatsby";
+import { debounce, throttle } from 'throttle-debounce';
 import { WrapperContext } from './Layout';
 import Burger from "./ui/Burger"
 import Logo from "../images/l-endroit-logo.inline.svg"
@@ -13,9 +14,9 @@ const Header = () => {
   // console.log(settings)
 
   useEffect(() => {
-    document.addEventListener("scroll", _onScroll)
+    document.addEventListener("scroll", throttle(250, _onScroll))
 
-    return () => document.removeEventListener("scroll", _onScroll)
+    return () => document.removeEventListener("scroll", throttle(250, _onScroll))
   }, [])
 
   let prevScrollTop = 0
@@ -27,6 +28,8 @@ const Header = () => {
       // console.log("up")
       setScrollDirection("up")
     }
+    if(window.pageYOffset === 0)setScrollDirection("")
+
     prevScrollTop = window.pageYOffset
   }
 

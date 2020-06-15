@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useRef, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import { debounce, throttle } from 'throttle-debounce';
 // import { withPreview } from "gatsby-source-prismic-graphql"
 import { RichText } from "prismic-reactjs"
 import Accr from "../images/l-endroit-accr.inline.svg"
@@ -30,9 +31,26 @@ const Footer = () => {
   const { prismicFooter } = useStaticQuery(query)
   const { infos, contacts, colophon } = prismicFooter.data
   // console.log(infos)
+  const footerRef = useRef()
+
+  useEffect(() => {
+    setTimeout(() => {
+      _onResize()
+    }, 250)
+    window.addEventListener("resize", throttle(250, _onResize))
+
+    return () => window.removeEventListener("resize", throttle(250, _onResize))
+  }, [])
+
+  const _onResize = () => {
+    const height = footerRef.current.clientHeight
+    console.log(height)
+    const sep = document.querySelector(".sep80")
+    sep.style.height = height+"px"
+  }
 
   return (
-    <footer>
+    <footer ref={footerRef}>
       <div className="inner h100">
         <div className="row ">
           <div className="col-md-6 col-xs-12">
@@ -48,7 +66,9 @@ const Footer = () => {
               <div className="row fS">
                 {contacts.map((el, i) => (
                   <div className="col-md-6 col-xs-6" key={i}>
-                    {RichText.render(el.contact.raw)}
+                    <div className="item">
+                      {RichText.render(el.contact.raw)}
+                    </div>
                   </div>
                 ))}
               </div>

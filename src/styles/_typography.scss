@@ -100,11 +100,13 @@ a {
 /* Text elements */
 p {
 	// margin-bottom: 0;
-	//line-height: 1.4;
+	
 	// hyphens: auto;
 	&:last-child{margin-bottom: 0}
 	&:empty{display: none}
 }
+.fS p{line-height: $fontSLh;}
+
 .texte{
 	p{text-indent: $margeM}
 	p:first-child{text-indent: 0}

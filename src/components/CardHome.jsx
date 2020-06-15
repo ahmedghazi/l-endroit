@@ -14,7 +14,7 @@ const CardHome = ({ input }) => {
     image_featured,
     categorie
   } = input.data
-  console.log(image_featured)
+  // console.log(image_featured)
   return (
     <div className="card-home">
       {/* <Link to={linkResolver(input._meta)}> */}
