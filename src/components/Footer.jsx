@@ -30,7 +30,7 @@ const query = graphql`
 const Footer = () => {
   const { prismicFooter } = useStaticQuery(query)
   const { infos, contacts, colophon } = prismicFooter.data
-  // console.log(infos)
+  // console.log(colophon)
   const footerRef = useRef()
 
   useEffect(() => {
@@ -46,8 +46,10 @@ const Footer = () => {
     const height = footerRef.current.clientHeight
     console.log(height)
     const sep = document.querySelector(".sep80")
-    sep.style.height = height+"px"
+    sep.style.height = (height - 20)+"px"
   }
+
+  // const hasColophon = 
 
   return (
     <footer ref={footerRef}>
@@ -73,12 +75,12 @@ const Footer = () => {
                 ))}
               </div>
             </div>
-            {colophon && (
+            {/* {colophon && colophon.raw && (
               <div className="colophon">
                 <h3>Colophon</h3>
                 <div className="fS">{RichText.render(colophon.raw)}</div>
               </div>
-            )}
+            )} */}
             <div className="copy fS">
               <div className="row">
                 <div className="col-md-6 col-xs-6">
