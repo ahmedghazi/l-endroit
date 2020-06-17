@@ -17,7 +17,7 @@ exports.createPages = async ({
     } = actions
 
     const templateHome = path.resolve("src/templates/page-home.jsx")
-    // const templateProject = path.resolve("src/templates/page-project.jsx")
+    const templateProject = path.resolve("src/templates/page-project.jsx")
 
     createPage({
         path: '/',
@@ -36,31 +36,29 @@ exports.createPages = async ({
     // })
 
     //////////////////////////////////
-    // const projects = await graphql(`
-    // {
-    //     allPrismicProject {
-    //         edges {
-    //             node {
-    //                 uid
-    //             }
-    //         }
-    //     }
-    // }
-    // `)
+    const projects = await graphql(`
+    {
+        allPrismicProject {
+            nodes {
+                uid
+            }
+        }
+    }
+    `)
 
-    // projects.data.allPrismicProject.edges.forEach(edge => {
-    //     const path = `/project/${edge.node.uid}`
-
-    //     createPage({
-    //         path: path,
-    //         component: templateProject,
-    //         context: {
-    //             uid: edge.node.uid,
-    //             slug: edge.node.uid,
-    //             template: 'project'
-    //         },
-    //     })
-    // })
+    projects.data.allPrismicProject.nodes.forEach(edge => {
+        const path = `/project/${edge.uid}`
+// console.log(edge)
+        createPage({
+            path: path,
+            component: templateProject,
+            context: {
+                uid: edge.uid,
+                slug: edge.uid,
+                template: 'project'
+            },
+        })
+    })
 
 
 }

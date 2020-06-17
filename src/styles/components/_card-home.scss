@@ -9,11 +9,14 @@
     figure{}
     &:hover{
         //h2{color: $color2}
+        // background: white;
+        // a{color: $white;}
     }
 
     .card-header{
         padding-left: $margeS;
         height: 100%;
+        .real{text-transform: uppercase;}
         .top{
             padding-bottom: $margeS;
             border-bottom: $border;

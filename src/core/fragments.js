@@ -15,7 +15,8 @@ export const query = graphql`
       text
     }
     texte {
-      html
+      text
+      raw
     }
     realisateur
     image_featured {
@@ -26,6 +27,7 @@ export const query = graphql`
       label
       valeur {
         html
+        raw
       }
     }
     categorie {
