@@ -5,26 +5,39 @@ import Img from "gatsby-image"
 import { RichText } from 'prismic-reactjs';
 import { getYearByDate } from '../core/utils'
 import SEO from '../components/seo'
+import CardHome from "../components/CardHome"
 
 export const pageQuery = graphql`
-  query ProjectBySlug($uid: String!) {
-    prismicProject(uid: {eq: $uid}) {
+  query ProjectBySlug($uid: String!, $categorieUid: String!) {
+    project:prismicProject(uid: {eq: $uid}) {
       data{
         ...project
       }
     }
+    # related:allPrismicProject(filter: {data: {categorie: {slug: {eq: $categorieUid}}}}) {
+    #   edges {
+    #     node {
+    #       uid
+    #     }
+    #   }
+    # }
+    related:allPrismicProject(filter: {
+      uid: {ne: $uid}
+      data: {
+        # realisateur: {eq: $realisateur},
+        categorie: {slug: {eq: $categorieUid}}
+      }
+    }) {
+      distinct(field: uid)
+      nodes {
+        data {
+          ...project
+        }
+      }
+    }
+    
   }
 `
-
-// const Image = ({ source = {}, property, ...props }) => {
-//   const sourceSharp = source[`${property}Sharp`];
-//   if (sourceSharp && sourceSharp.childImageSharp) {
-//     return <Img {...sourceSharp.childImageSharp} />;
-//   } else if (source[property] && source[property].url) {
-//     return <img src={source[property].url} {...props} alt={source[property].alt} />;
-//   }
-//   return null;
-// };
 
 const Project = ({ data }) => {
   console.log(data)
@@ -36,7 +49,8 @@ const Project = ({ data }) => {
     date,
     categorie,
     credits
-  } = data.prismicProject.data
+  } = data.project.data
+  const { related } = data
 // console.log(categorie)
   return (
     <div className="page-project">
@@ -50,8 +64,8 @@ const Project = ({ data }) => {
       <div className="hero">
         <Img {...image_featured} />
       </div>
-      <div className="container-fluid">
-        <div className="header">
+      <section className="container-fluid">
+        <section className="header">
           <div className="row">
             <div className="col-md-6 col-xs-12">
               <div className="item title">
@@ -63,21 +77,21 @@ const Project = ({ data }) => {
               <div className="item metas h100">
                 <div className="row">
                   <div className="col-md-6 col-xs-6">
-                    {realisateur}
+                    <div className="ttu">{realisateur}</div>
                   </div>
-                  <div className="col-md-3 col-xs-3">
-                    {categorie.title}
-                  </div>
-                  <div className="col-md-3 col-xs-3 text-right">
-                    {getYearByDate(date)}
+       
+                  <div className="col-md-6">
+                    <div className="ttl">
+                      {`${categorie.document.data.title} — ${getYearByDate(date)}`}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
           </div>
-        </div>
-        <div className="content">
+        </section>
+        <section className="content">
           <div className="row">
             <div className="col-md-6 col-xs-12">
               <div className="texte">
@@ -102,9 +116,16 @@ const Project = ({ data }) => {
               </ul>
             </div>
           </div>
+        </section>
+      </section>
+      <section className="related no-gutter">
+        <div className="container-fluid">
+          <h2 className="section-title">Dans le même genre</h2>
+          {related.nodes.map(( project, i) => !project ? null : (
+            <CardHome input={project} key={i} />
+          ))}
         </div>
-      </div>
-
+      </section>
     </div>
 
   );

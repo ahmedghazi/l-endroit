@@ -15,9 +15,17 @@
   .content{
     padding-top: $margeS;
     padding-bottom: $margeS;
+    margin-bottom: $margeM;
     .credits{
       li{margin-bottom: 1em;}
       a{text-decoration: underline;}
+    }
+  }
+  .related{
+    
+    .section-title{
+      border-top: $border;
+      padding: $margeS 0;
     }
   }
 }
@@ -42,6 +50,13 @@
       .credits{
         li{margin-bottom: 1em;}
         a{text-decoration: underline;}
+      }
+    }
+    .related{
+      .section-title{
+        font-size: $fontS;
+        padding-top: $margeXS;
+        padding-bottom: $margeXS;
       }
     }
   }
