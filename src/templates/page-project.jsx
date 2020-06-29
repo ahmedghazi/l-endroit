@@ -30,6 +30,9 @@ export const pageQuery = graphql`
     }) {
       distinct(field: uid)
       nodes {
+        type
+        uid
+        url
         data {
           ...project
         }
@@ -51,7 +54,7 @@ const Project = ({ data }) => {
     credits
   } = data.project.data
   const { related } = data
-// console.log(categorie)
+  // console.log(categorie)
   return (
     <div className="page-project">
       <SEO
@@ -60,7 +63,7 @@ const Project = ({ data }) => {
         template="template-project dark"
         pageBanner={image_featured.url}
         page={true}
-        />
+      />
       <div className="hero">
         <Img {...image_featured} />
       </div>
@@ -79,7 +82,7 @@ const Project = ({ data }) => {
                   <div className="col-md-6 col-xs-6">
                     <div className="ttu">{realisateur}</div>
                   </div>
-       
+
                   <div className="col-md-6">
                     <div className="ttl">
                       {`${categorie.document.data.title} — ${getYearByDate(date)}`}
@@ -100,7 +103,7 @@ const Project = ({ data }) => {
             </div>
             <div className="col-md-6 col-xs-12">
               <ul className="credits fS">
-                {credits.map((li,i ) => (
+                {credits.map((li, i) => (
                   <li key={i}>
                     <div className="row">
                       <div className="col-md-6 col-xs-6">
@@ -121,7 +124,7 @@ const Project = ({ data }) => {
       <section className="related no-gutter">
         <div className="container-fluid">
           <h2 className="section-title">Dans le même genre</h2>
-          {related.nodes.map(( project, i) => !project ? null : (
+          {related.nodes.map((project, i) => !project ? null : (
             <CardHome input={project} key={i} />
           ))}
         </div>

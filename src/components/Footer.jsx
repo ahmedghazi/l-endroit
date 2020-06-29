@@ -46,7 +46,7 @@ const Footer = () => {
     const height = footerRef.current.clientHeight
     console.log(height)
     const sep = document.querySelector(".sep80")
-    sep.style.height = (height - 20)+"px"
+    sep.style.height = (height - 20) + "px"
   }
 
   // const hasColophon = 
