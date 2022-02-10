@@ -19,7 +19,7 @@
     "gatsby-source-prismic": "3.0.0",
     "gatsby-transformer-remark": "^2.1.7",
     "gatsby-transformer-sharp": "^2.1.21",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "pubsub-js": "^1.7.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
