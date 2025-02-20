@@ -72,7 +72,7 @@ const Footer = () => {
                   <div className="col-md-6 col-xs-6" key={i}>
                     <div className="item">
                       {/* {RichText.render(el.contact.raw)} */}
-                      <PrismicRichText field={infos.richText} />
+                      <PrismicRichText field={el.contact.richText} />
                     </div>
                   </div>
                 ))}
