@@ -7,6 +7,7 @@ import { getYearByDate } from "../core/utils"
 import SEO from "../components/seo"
 import CardHome from "../components/CardHome"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { PrismicRichText } from "@prismicio/react"
 
 export const pageQuery = graphql`
   query ProjectBySlug($uid: String!, $categorieUid: String!) {
@@ -102,7 +103,10 @@ const Project = ({ data }) => {
         <section className="content">
           <div className="row">
             <div className="col-md-6 col-xs-12">
-              <div className="texte">{RichText.render(texte.raw)}</div>
+              <div className="texte">
+                {/* { RichText.render(texte.raw)} */}
+                <PrismicRichText field={texte.richText} />
+              </div>
             </div>
             <div className="col-md-6 col-xs-12">
               <ul className="credits fS">
@@ -114,7 +118,8 @@ const Project = ({ data }) => {
                       </div>
                       <div className="col-md-6 col-xs-6">
                         <div className="value ">
-                          {RichText.render(li.valeur.raw)}
+                          {/* {RichText.render(li.valeur.raw)} */}
+                          <PrismicRichText field={li.valeur.richText} />
                         </div>
                       </div>
                     </div>
