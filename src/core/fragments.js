@@ -10,13 +10,13 @@ export const query = graphql`
   #         banner{url}
   #     }
   # }
-  fragment project on PrismicProjectDataType {
+  fragment project on PrismicProjectData {
     title {
       text
     }
     texte {
       text
-      raw
+      richText
     }
     realisateur
     image_featured {
@@ -27,7 +27,7 @@ export const query = graphql`
       label
       valeur {
         html
-        raw
+        richText
       }
     }
     categorie {
@@ -42,20 +42,57 @@ export const query = graphql`
     }
   }
 
+  fragment sharp on PrismicImageField {
+    # url
+    # alt
+    # fluid(
+    #   maxWidth: 1920
+    #   imgixParams: { q: 80 }
+    #   srcSetBreakpoints: [900, 1440, 1920]
+    # ) {
+    #   # ...GatsbyPrismicImageFluid_noBase64
+    #   # ...GatsbyImageSharpFluid_withWebp
+    #   ...GatsbyPrismicImageFluid_withWebp
+    # }
+    url
+    alt
+    dimensions {
+      width
+      height
+    }
+    gatsbyImageData(width: 2000)
+  }
+  fragment sharpNoB64 on PrismicImageField {
+    # url
+    # alt
+    # fluid(
+    #   maxWidth: 1920
+    #   imgixParams: { q: 80 }
+    #   srcSetBreakpoints: [900, 1440, 1920]
+    # ) {
+    #   ...GatsbyPrismicImageFluid_noBase64
+    # }
+    url
+    alt
+    dimensions {
+      width
+      height
+    }
+    gatsbyImageData(width: 2000)
+  }
 
-
-  fragment sharp on PrismicImageType {
-		url
-		alt
-		fluid(maxWidth: 1500) {
-			...GatsbyPrismicImageFluid
-		}
-		# localFile {
-		# 	childImageSharp {
-		# 		fluid(maxWidth: 1500, quality: 70){
-		# 			...GatsbyPrismicImageFluid
-		# 		}
-		# 	}
-		# }
-	}
+  # fragment sharp on PrismicImageType {
+  #   url
+  #   alt
+  #   fluid(maxWidth: 1500) {
+  #     ...GatsbyPrismicImageFluid
+  #   }
+  #   # localFile {
+  #   # 	childImageSharp {
+  #   # 		fluid(maxWidth: 1500, quality: 70){
+  #   # 			...GatsbyPrismicImageFluid
+  #   # 		}
+  #   # 	}
+  #   # }
+  # }
 `

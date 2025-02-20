@@ -1,16 +1,17 @@
-import React from 'react';
+import React from "react"
 import { graphql, Link } from "gatsby"
-import Img from "gatsby-image"
+// import Img from "gatsby-image"
 // import { linkResolver } from 'gatsby-source-prismic-graphql';
-import { RichText } from 'prismic-reactjs';
-import { getYearByDate } from '../core/utils'
-import SEO from '../components/seo'
+import { RichText } from "prismic-reactjs"
+import { getYearByDate } from "../core/utils"
+import SEO from "../components/seo"
 import CardHome from "../components/CardHome"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 export const pageQuery = graphql`
   query ProjectBySlug($uid: String!, $categorieUid: String!) {
-    project:prismicProject(uid: {eq: $uid}) {
-      data{
+    project: prismicProject(uid: { eq: $uid }) {
+      data {
         ...project
       }
     }
@@ -21,13 +22,15 @@ export const pageQuery = graphql`
     #     }
     #   }
     # }
-    related:allPrismicProject(filter: {
-      uid: {ne: $uid}
-      data: {
-        # realisateur: {eq: $realisateur},
-        categorie: {slug: {eq: $categorieUid}}
+    related: allPrismicProject(
+      filter: {
+        uid: { ne: $uid }
+        data: {
+          # realisateur: {eq: $realisateur},
+          categorie: { slug: { eq: $categorieUid } }
+        }
       }
-    }) {
+    ) {
       distinct(field: uid)
       nodes {
         type
@@ -38,7 +41,6 @@ export const pageQuery = graphql`
         }
       }
     }
-    
   }
 `
 
@@ -51,7 +53,7 @@ const Project = ({ data }) => {
     realisateur,
     date,
     categorie,
-    credits
+    credits,
   } = data.project.data
   const { related } = data
   // console.log(categorie)
@@ -65,7 +67,11 @@ const Project = ({ data }) => {
         page={true}
       />
       <div className="hero">
-        <Img {...image_featured} />
+        {/* <Img {...image_featured} /> */}
+        <GatsbyImage
+          image={getImage(image_featured)}
+          alt={image_featured.alt ? image_featured.alt : title.text}
+        />
       </div>
       <section className="container-fluid">
         <section className="header">
@@ -91,15 +97,12 @@ const Project = ({ data }) => {
                 </div>
               </div>
             </div>
-
           </div>
         </section>
         <section className="content">
           <div className="row">
             <div className="col-md-6 col-xs-12">
-              <div className="texte">
-                {RichText.render(texte.raw)}
-              </div>
+              <div className="texte">{RichText.render(texte.raw)}</div>
             </div>
             <div className="col-md-6 col-xs-12">
               <ul className="credits fS">
@@ -110,10 +113,11 @@ const Project = ({ data }) => {
                         <div className="label">{li.label}</div>
                       </div>
                       <div className="col-md-6 col-xs-6">
-                        <div className="value ">{RichText.render(li.valeur.raw)}</div>
+                        <div className="value ">
+                          {RichText.render(li.valeur.raw)}
+                        </div>
                       </div>
                     </div>
-
                   </li>
                 ))}
               </ul>
@@ -124,14 +128,13 @@ const Project = ({ data }) => {
       <section className="related no-gutter">
         <div className="container-fluid">
           <h2 className="section-title">Dans le même genre</h2>
-          {related.nodes.map((project, i) => !project ? null : (
-            <CardHome input={project} key={i} />
-          ))}
+          {related.nodes.map((project, i) =>
+            !project ? null : <CardHome input={project} key={i} />
+          )}
         </div>
       </section>
     </div>
-
-  );
+  )
 }
 
 export default Project

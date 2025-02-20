@@ -16,7 +16,7 @@ export const pageQuery = graphql`
           text
         }
         texte {
-          text
+          richText
         }
         projects {
           project {
@@ -25,7 +25,7 @@ export const pageQuery = graphql`
                 type
                 uid
                 url
-                data{
+                data {
                   ...project
                 }
               }
@@ -54,9 +54,11 @@ const Home = ({ data }) => {
       {/* {RichText.render(title)} */}
 
       <div className="projets no-gutter">
-        {projects.map(({ project }, i) => !project.document ? null : (
-          <CardHome input={project.document} key={i} />
-        ))}
+        {projects.map(({ project }, i) =>
+          !project.document ? null : (
+            <CardHome input={project.document} key={i} />
+          )
+        )}
       </div>
     </div>
   )
